@@ -1,0 +1,20 @@
+﻿<Window x:Class="System_Info.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:System_Info"
+        mc:Ignorable="d"
+        Title="System-Info" Height="320" Width="480">
+    <Grid>
+        <ListView x:Name="lvServices" HorizontalAlignment="Left" Height="196" Margin="5,10,0,0" VerticalAlignment="Top" Width="457" SelectionChanged="listView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Service name" Width="320" DisplayMemberBinding="{Binding serviceName}"/>
+                    <GridViewColumn Header="Status" Width="80" DisplayMemberBinding="{Binding serviceStatus}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
