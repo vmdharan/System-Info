@@ -55,15 +55,15 @@ namespace System_Info
         {
             try
             {
-                //lblSNVal.Text = services[lvServices.SelectedIndices[0]].ServiceName.ToString();
-                //lblSSVal.Text = services[lvServices.SelectedIndices[0]].Status.ToString();
+                lblSNVal.Content = services[lvServices.SelectedIndex].ServiceName.ToString();
+                lblSSVal.Content = services[lvServices.SelectedIndex].Status.ToString();
 
                 ManagementPath mp;
-                //mp = new ManagementPath(string.Format("Win32_Service.Name='{0}'",
-                //services[lvServices.SelectedIndices[0]].ServiceName));
+                mp = new ManagementPath(string.Format("Win32_Service.Name='{0}'",
+                    services[lvServices.SelectedIndex].ServiceName));
 
-                //ManagementObject mo = new ManagementObject(mp);
-                //rtbServDesc.Text = mo["Description"].ToString();
+                ManagementObject mo = new ManagementObject(mp);
+                tbServDesc.Text = mo["Description"].ToString();
             }
             catch (Exception ex)
             {

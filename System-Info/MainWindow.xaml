@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:System_Info"
         mc:Ignorable="d"
-        Title="System-Info" Height="320" Width="480">
+        Title="System-Info" Height="412" Width="480">
     <Grid>
         <ListView x:Name="lvServices" HorizontalAlignment="Left" Height="196" Margin="5,10,0,0" VerticalAlignment="Top" Width="457" SelectionChanged="listView_SelectionChanged">
             <ListView.View>
@@ -15,6 +15,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <Label x:Name="lblServName" Content="Service Name:" HorizontalAlignment="Left" Margin="5,214,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblServStat" Content="Service Status:" HorizontalAlignment="Left" Margin="5,240,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.947,0.308"/>
+        <Label x:Name="lblSNVal" Content="----" HorizontalAlignment="Left" Margin="117,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.211,0.192"/>
+        <Label x:Name="lblSSVal" Content="----" HorizontalAlignment="Left" Margin="117,240,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.655,1.038"/>
+        <Label x:Name="lblServDesc" Content="Server Description:" HorizontalAlignment="Left" Margin="5,267,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbServDesc" HorizontalAlignment="Left" Height="71" Margin="5,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="457" Background="{x:Null}" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
     </Grid>
 </Window>
