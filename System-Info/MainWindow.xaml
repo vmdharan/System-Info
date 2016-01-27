@@ -8,6 +8,14 @@
         Title="System-Info" Height="445" Width="473">
     <Grid>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="400" Margin="2,2,0,0" VerticalAlignment="Top" Width="452" Background="{x:Null}">
+            <TabItem Header="Summary">
+                <Grid>
+                    <Label x:Name="lblMemAvail" Content="Available memory: " HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-1.077"/>
+                    <Label x:Name="lblMemAvailVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,126,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMemTotal" Content="Total memory: " HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMemTotalVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.316,-1.192"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="Services">
                 <Grid>
                     <ListView x:Name="lvServices" HorizontalAlignment="Left" Height="196" Margin="5,10,0,0" VerticalAlignment="Top" Width="431" SelectionChanged="listView_SelectionChanged" Background="{x:Null}">

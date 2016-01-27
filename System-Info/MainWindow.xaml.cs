@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Management;
 using System.ServiceProcess;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace System_Info
 {
@@ -30,8 +32,33 @@ namespace System_Info
             InitializeComponent();
 
             initServiceList();
+
+            // Update memory statistics every second.
+            DispatcherTimer dTimer = new DispatcherTimer();
+            dTimer.Tick += new EventHandler(updateSysInfo);
+            dTimer.Interval = new TimeSpan(0, 0, 1);
+            dTimer.Start();
         }
 
+        // Get system information
+        private void updateSysInfo(object sender, EventArgs e)
+        {
+            PerformanceCounter ramInfo, ramInfo2;
+            try
+            {
+                ramInfo = new PerformanceCounter("Memory", "Available MBytes");
+                //ramInfo2 = new PerformanceCounter("Memory", "Available MBytes");
+
+                //lblMemTotalVal.Content = ramInfo2.NextValue() + " MB";
+                lblMemAvailVal.Content = ramInfo.NextValue() + " MB";
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        // Initialise service list.
         private void initServiceList()
         {
             services = ServiceController.GetServices();
