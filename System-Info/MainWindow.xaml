@@ -12,8 +12,8 @@
                 <Grid>
                     <Label x:Name="lblMemAvail" Content="Available memory: " HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-1.077"/>
                     <Label x:Name="lblMemAvailVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,126,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblMemTotal" Content="Total memory: " HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblMemTotalVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.316,-1.192"/>
+                    <Label x:Name="lblMemTotal" Content="Total memory: " HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMemTotalVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.316,-1.192"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Services">

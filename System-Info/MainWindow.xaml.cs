@@ -43,18 +43,38 @@ namespace System_Info
         // Get system information
         private void updateSysInfo(object sender, EventArgs e)
         {
-            PerformanceCounter ramInfo, ramInfo2;
+            PerformanceCounter ramInfo;
+            ObjectQuery oq = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+            ManagementObjectSearcher mos = new ManagementObjectSearcher(oq);
+            ManagementObjectCollection moc = mos.Get();
+            
             try
             {
-                ramInfo = new PerformanceCounter("Memory", "Available MBytes");
-                //ramInfo2 = new PerformanceCounter("Memory", "Available MBytes");
 
-                //lblMemTotalVal.Content = ramInfo2.NextValue() + " MB";
+                foreach (ManagementObject mo in moc)
+                {
+                    int memSize = int.Parse(mo["TotalVisibleMemorySize"].ToString()) / 1024;
+                    lblMemTotalVal.Content = memSize.ToString() + " MB";
+                }
+
+                ramInfo = new PerformanceCounter("Memory", "Available MBytes");
                 lblMemAvailVal.Content = ramInfo.NextValue() + " MB";
             }
             catch (Exception ex)
             {
 
+            }
+
+            var wmiObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+
+            var memoryValues = wmiObject.Get().Cast<ManagementObject>().Select(mo => new {
+                FreePhysicalMemory = Double.Parse(mo["FreePhysicalMemory"].ToString()),
+                TotalVisibleMemorySize = Double.Parse(mo["TotalVisibleMemorySize"].ToString())
+            }).FirstOrDefault();
+
+            if (memoryValues != null)
+            {
+                var percent = ((memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory) / memoryValues.TotalVisibleMemorySize) * 100;
             }
         }
 
