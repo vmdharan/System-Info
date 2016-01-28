@@ -78,6 +78,8 @@ namespace System_Info
                 {
                     // CPU info
                     lblCPUInfoVal.Content = mo2.Properties["Name"].Value.ToString();
+                    lblCoresVal.Content = mo2.Properties["NumberOfCores"].Value.ToString();
+                    lblThreadsVal.Content = Environment.ProcessorCount;
                 }
             }
             catch (Exception ex)
