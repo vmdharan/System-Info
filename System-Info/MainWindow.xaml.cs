@@ -52,8 +52,15 @@ namespace System_Info
             {
                 foreach (ManagementObject mo in moc)
                 {
+                    // Total memory
                     int memSize = int.Parse(mo["TotalVisibleMemorySize"].ToString()) / 1024;
                     lblMemTotalVal.Content = memSize.ToString() + " MB";
+
+                    // Device name
+                    lblSysNameVal.Content = Environment.MachineName;
+
+                    // Operating system
+                    lblOSVal.Content = mo["Caption"].ToString();
                 }
             }
             catch (Exception ex)

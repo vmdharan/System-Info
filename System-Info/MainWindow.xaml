@@ -10,10 +10,14 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="400" Margin="2,2,0,0" VerticalAlignment="Top" Width="452" Background="{x:Null}">
             <TabItem Header="Summary">
                 <Grid>
-                    <Label x:Name="lblMemAvail" Content="Available memory: " HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-1.077"/>
+                    <Label x:Name="lblMemAvail" Content="Available memory:" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-1.077"/>
                     <Label x:Name="lblMemAvailVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,126,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblMemTotal" Content="Total memory: " HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMemTotal" Content="Total memory:" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblMemTotalVal" Content="0 MB" HorizontalAlignment="Left" Margin="121,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.316,-1.192"/>
+                    <Label x:Name="lblSysName" Content="Device name:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.079,1.654"/>
+                    <Label x:Name="lblSysNameVal" Content="----" HorizontalAlignment="Left" Margin="120,40,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblOS" Content="OS version:" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.316,-0.077"/>
+                    <Label x:Name="lblOSVal" Content="----" HorizontalAlignment="Left" Margin="120,66,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Services">
