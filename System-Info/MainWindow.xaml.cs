@@ -32,49 +32,49 @@ namespace System_Info
             InitializeComponent();
 
             initServiceList();
+            updateSysInfo();
 
             // Update memory statistics every second.
             DispatcherTimer dTimer = new DispatcherTimer();
-            dTimer.Tick += new EventHandler(updateSysInfo);
+            dTimer.Tick += new EventHandler(updateSysInfo_perTick);
             dTimer.Interval = new TimeSpan(0, 0, 1);
             dTimer.Start();
         }
 
         // Get system information
-        private void updateSysInfo(object sender, EventArgs e)
+        private void updateSysInfo()
         {
-            PerformanceCounter ramInfo;
             ObjectQuery oq = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
             ManagementObjectSearcher mos = new ManagementObjectSearcher(oq);
             ManagementObjectCollection moc = mos.Get();
-            
+
             try
             {
-
                 foreach (ManagementObject mo in moc)
                 {
                     int memSize = int.Parse(mo["TotalVisibleMemorySize"].ToString()) / 1024;
                     lblMemTotalVal.Content = memSize.ToString() + " MB";
                 }
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
+
+        // Get system information - once every tick
+        private void updateSysInfo_perTick(object sender, EventArgs e)
+        {
+            PerformanceCounter ramInfo;   
+            
+            try
+            {
                 ramInfo = new PerformanceCounter("Memory", "Available MBytes");
                 lblMemAvailVal.Content = ramInfo.NextValue() + " MB";
             }
             catch (Exception ex)
             {
 
-            }
-
-            var wmiObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
-
-            var memoryValues = wmiObject.Get().Cast<ManagementObject>().Select(mo => new {
-                FreePhysicalMemory = Double.Parse(mo["FreePhysicalMemory"].ToString()),
-                TotalVisibleMemorySize = Double.Parse(mo["TotalVisibleMemorySize"].ToString())
-            }).FirstOrDefault();
-
-            if (memoryValues != null)
-            {
-                var percent = ((memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory) / memoryValues.TotalVisibleMemorySize) * 100;
             }
         }
 
