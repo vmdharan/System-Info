@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Management;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace System_Info
@@ -27,9 +17,18 @@ namespace System_Info
         // Array to hold services.
         ServiceController[] services;
 
+        // Memory used percentage.
+        public double memVal { get; set; }
+        private int totalMem;
+        private int availMem;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            memVal = 0.0;
+            totalMem = 0;
+            availMem = 0;
 
             initServiceList();
             updateSysInfo();
@@ -58,6 +57,7 @@ namespace System_Info
                     // Total memory
                     int memSize = int.Parse(mo["TotalVisibleMemorySize"].ToString()) / 1024;
                     lblMemTotalVal.Content = memSize.ToString() + " MB";
+                    totalMem = memSize;
 
                     // Device name
                     lblSysNameVal.Content = Environment.MachineName;
@@ -97,6 +97,13 @@ namespace System_Info
             {
                 ramInfo = new PerformanceCounter("Memory", "Available MBytes");
                 lblMemAvailVal.Content = ramInfo.NextValue() + " MB";
+                availMem = (int)ramInfo.NextValue();
+
+                if ((availMem > 0) && (totalMem > 0))
+                {
+                    memVal = ((double)(totalMem-availMem) / totalMem) * 100;
+                    lblMemPct.Content = ((int)memVal).ToString();
+                }
             }
             catch (Exception ex)
             {
