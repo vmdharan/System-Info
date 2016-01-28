@@ -48,6 +48,9 @@ namespace System_Info
             ManagementObjectSearcher mos = new ManagementObjectSearcher(oq);
             ManagementObjectCollection moc = mos.Get();
 
+            ManagementClass mc = new ManagementClass("Win32_Processor");
+            ManagementObjectCollection moc2 = mc.GetInstances();
+
             try
             {
                 foreach (ManagementObject mo in moc)
@@ -60,12 +63,26 @@ namespace System_Info
                     lblSysNameVal.Content = Environment.MachineName;
 
                     // Operating system
-                    lblOSVal.Content = mo["Caption"].ToString();
+                    lblOSVer1.Content = mo["Caption"].ToString();
+                    lblOSVer2.Content = Environment.OSVersion.Version;
                 }
             }
             catch (Exception ex)
             {
+                // Exception
+            }
 
+            try
+            {
+                foreach(ManagementObject mo2 in moc2)
+                {
+                    // CPU info
+                    lblCPUInfoVal.Content = mo2.Properties["Name"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Exception
             }
         }
 
