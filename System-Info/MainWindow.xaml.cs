@@ -50,6 +50,9 @@ namespace System_Info
             ManagementClass mc = new ManagementClass("Win32_Processor");
             ManagementObjectCollection moc2 = mc.GetInstances();
 
+            ManagementObjectSearcher mos3 = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+            ManagementObjectCollection moc3 = mos3.Get();
+
             try
             {
                 foreach (ManagementObject mo in moc)
@@ -85,6 +88,20 @@ namespace System_Info
             catch (Exception ex)
             {
                 // Exception
+            }
+
+            try
+            {
+                foreach(ManagementObject mo3 in moc3)
+                {
+                    // GPU info
+                    lblGPUInfoVal.Content = mo3.Properties["Name"].Value.ToString();
+                    lblGPUInfoVer.Content = mo3.Properties["DriverVersion"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

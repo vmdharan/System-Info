@@ -31,6 +31,10 @@
                         <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="35" Percentage="{Binding Content, ElementName=lblMemPct}" SegmentColor="#FF22AAFF" StrokeThickness="10" />
                         <Label x:Name="lblMemPct" Content="0" HorizontalAlignment="Left" Margin="28,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.269" FontSize="26.667" FontWeight="Bold" FontFamily="Agency FB"/>
                     </Grid>
+                    <Label x:Name="lblGPUInfoVal" Content="----" HorizontalAlignment="Left" Margin="120,223,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblGPUInfo" Content="Graphics card:" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblGPUInfoVer" Content="----" HorizontalAlignment="Left" Margin="120,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.483,1.577"/>
+                    <Label x:Name="lblGPUVer" Content="Driver version:" HorizontalAlignment="Left" Margin="10,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.368,0.038"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Services">
