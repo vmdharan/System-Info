@@ -36,7 +36,7 @@ namespace System_Info
             // Update memory statistics every second.
             DispatcherTimer dTimer = new DispatcherTimer();
             dTimer.Tick += new EventHandler(updateSysInfo_perTick);
-            dTimer.Interval = new TimeSpan(0, 0, 1);
+            dTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dTimer.Start();
         }
 
