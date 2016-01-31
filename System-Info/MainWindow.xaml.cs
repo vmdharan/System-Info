@@ -33,7 +33,7 @@ namespace System_Info
             initServiceList();
             updateSysInfo();
 
-            // Update memory statistics every second.
+            // Update memory statistics every tick.
             DispatcherTimer dTimer = new DispatcherTimer();
             dTimer.Tick += new EventHandler(updateSysInfo_perTick);
             dTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
@@ -127,6 +127,7 @@ namespace System_Info
 
             }
         }
+
 
         // Initialise service list.
         private void initServiceList()
