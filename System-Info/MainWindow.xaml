@@ -43,8 +43,9 @@
                     <ListView x:Name="lvServices" HorizontalAlignment="Left" Height="196" Margin="5,10,0,0" VerticalAlignment="Top" Width="431" SelectionChanged="listView_SelectionChanged" Background="{x:Null}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Display name" Width="320" DisplayMemberBinding="{Binding serviceName}"/>
+                                <GridViewColumn Header="Display name" Width="280" DisplayMemberBinding="{Binding serviceName}"/>
                                 <GridViewColumn Header="Status" Width="80" DisplayMemberBinding="{Binding serviceStatus}"/>
+                                <GridViewColumn Header="PID" Width="40" DisplayMemberBinding="{Binding servicePID}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
