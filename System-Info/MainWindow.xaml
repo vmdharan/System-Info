@@ -43,9 +43,8 @@
                     <ListView x:Name="lvServices" HorizontalAlignment="Left" Height="196" Margin="5,10,0,0" VerticalAlignment="Top" Width="431" SelectionChanged="listView_SelectionChanged" Background="{x:Null}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Display name" Width="280" DisplayMemberBinding="{Binding serviceName}"/>
+                                <GridViewColumn Header="Display name" Width="320" DisplayMemberBinding="{Binding serviceName}"/>
                                 <GridViewColumn Header="Status" Width="80" DisplayMemberBinding="{Binding serviceStatus}"/>
-                                <GridViewColumn Header="PID" Width="40" DisplayMemberBinding="{Binding servicePID}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -58,6 +57,8 @@
                             <TextBlock x:Name="tbServDesc" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="400" FontWeight="Normal" />
                         </ScrollViewer>
                     </GroupBox>
+                    <Label x:Name="lblServPID" Content="Service PID:" HorizontalAlignment="Left" Margin="271,240,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,-0.269" FontWeight="Bold"/>
+                    <Label x:Name="lblServPIDInfo" Content="----" HorizontalAlignment="Left" Margin="353,240,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.345,0.5"/>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">

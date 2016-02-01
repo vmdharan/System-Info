@@ -138,32 +138,12 @@ namespace System_Info
 
             for (int i = 0; i < services.Length; i++)
             {
-                // Get the process ID for a service.
-                string ServicePIDQuery = string.Format(
-                    "SELECT ProcessId FROM Win32_Service WHERE Name='{0}'",
-                services[i].ServiceName.ToString());
-                ManagementObjectSearcher searcher =
-                    new ManagementObjectSearcher(ServicePIDQuery);
-
-                foreach(ManagementObject obj in searcher.Get())
-                {
-                    try
-                    {
-                        pid = (uint)obj["ProcessId"];
-                        //Process process = null;
-                        //process = Process.GetProcessById((int)pid);
-                    }
-                    catch(Exception ex)
-                    {
-
-                    }
-                }
+                
 
                 sl.Add(new servList()
                 {
                     serviceName = services[i].DisplayName.ToString(),
-                    serviceStatus = services[i].Status.ToString(),
-                    servicePID = (pid > 0 ? pid.ToString() : "")
+                    serviceStatus = services[i].Status.ToString()
                 });
 
                 pid = 0;
@@ -187,6 +167,27 @@ namespace System_Info
 
                 ManagementObject mo = new ManagementObject(mp);
                 tbServDesc.Text = mo["Description"].ToString();
+
+                // Get the process ID for a service.
+                uint pid = 0;
+                string ServicePIDQuery = string.Format(
+                    "SELECT ProcessId FROM Win32_Service WHERE Name='{0}'",
+                services[lvServices.SelectedIndex].ServiceName.ToString());
+                ManagementObjectSearcher searcher =
+                    new ManagementObjectSearcher(ServicePIDQuery);
+
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    try
+                    {
+                        pid = (uint)obj["ProcessId"];
+                        lblServPIDInfo.Content = (pid > 0 ? pid.ToString() : "");
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -198,7 +199,6 @@ namespace System_Info
         {
             public string serviceName { get; set; }
             public string serviceStatus { get; set; }
-            public string servicePID { get; set; }
         }
     }
 }
