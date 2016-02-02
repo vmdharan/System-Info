@@ -23,9 +23,9 @@
                     <Label x:Name="lblCPUInfoVal" Content="----" HorizontalAlignment="Left" Margin="121,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.053,0.385"/>
                     <Label x:Name="lblCPUInfo" Content="Processor type:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.053,0.115" FontWeight="Bold"/>
                     <Label x:Name="lblCoresVal" Content="----" HorizontalAlignment="Left" Margin="120,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.483,0.346"/>
-                    <Label x:Name="lblThreadsVal" Content="----" HorizontalAlignment="Left" Margin="268,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.448,-0.385"/>
+                    <Label x:Name="lblThreadsVal" Content="----" HorizontalAlignment="Left" Margin="289,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.448,-0.385"/>
                     <Label x:Name="lblCores" Content="Physical Cores:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.211,0.115" FontWeight="Bold"/>
-                    <Label x:Name="lblThreads" Content="Threads:" HorizontalAlignment="Left" Margin="196,127,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="-0.879,0.577"/>
+                    <Label x:Name="lblThreads" Content="Logical Cores:" HorizontalAlignment="Left" Margin="196,127,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="-0.879,0.577"/>
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="250,201,47,81">
                         <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="28" SegmentColor="#FFFFDDEE" StrokeThickness="10" Percentage="100" />
                         <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="28" Percentage="{Binding Content, ElementName=lblMemPct}" SegmentColor="#FF22AAFF" StrokeThickness="10" />

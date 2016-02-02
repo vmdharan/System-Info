@@ -36,20 +36,23 @@ namespace System_Info
             // Update memory statistics every tick.
             DispatcherTimer dTimer = new DispatcherTimer();
             dTimer.Tick += new EventHandler(updateSysInfo_perTick);
-            dTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            dTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
             dTimer.Start();
         }
 
         // Get system information
         private void updateSysInfo()
         {
+            // Query information about the operating system.
             ObjectQuery oq = new ObjectQuery("SELECT * FROM Win32_OperatingSystem");
             ManagementObjectSearcher mos = new ManagementObjectSearcher(oq);
             ManagementObjectCollection moc = mos.Get();
 
+            // Query information about the processor.
             ManagementClass mc = new ManagementClass("Win32_Processor");
             ManagementObjectCollection moc2 = mc.GetInstances();
 
+            // Query information about the video card.
             ManagementObjectSearcher mos3 = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
             ManagementObjectCollection moc3 = mos3.Get();
 
@@ -57,7 +60,7 @@ namespace System_Info
             {
                 foreach (ManagementObject mo in moc)
                 {
-                    // Total memory
+                    // Total memory - in Megabytes
                     int memSize = int.Parse(mo["TotalVisibleMemorySize"].ToString()) / 1024;
                     lblMemTotalVal.Content = memSize.ToString() + " MB";
                     totalMem = memSize;
@@ -79,7 +82,7 @@ namespace System_Info
             {
                 foreach(ManagementObject mo2 in moc2)
                 {
-                    // CPU info
+                    // CPU info - Name, physical cores and logical cores.
                     lblCPUInfoVal.Content = mo2.Properties["Name"].Value.ToString();
                     lblCoresVal.Content = mo2.Properties["NumberOfCores"].Value.ToString();
                     lblThreadsVal.Content = Environment.ProcessorCount;
@@ -105,19 +108,20 @@ namespace System_Info
             }
         }
 
-        // Get system information - once every tick
+        // Get system information - once every tick.
         private void updateSysInfo_perTick(object sender, EventArgs e)
         {
             PerformanceCounter ramInfo;
             PerformanceCounter uptime;   
             
-            // Update available memory
+            // Get information on the available system memory.
             try
             {
                 ramInfo = new PerformanceCounter("Memory", "Available MBytes");
                 lblMemAvailVal.Content = ramInfo.NextValue() + " MB";
                 availMem = (int)ramInfo.NextValue();
 
+                // Update the memory usage percentage.
                 if ((availMem > 0) && (totalMem > 0))
                 {
                     memVal = ((double)(totalMem-availMem) / totalMem) * 100;
@@ -129,7 +133,7 @@ namespace System_Info
 
             }
 
-            // Uptime
+            // Get information on the system uptime.
             try
             {
                 uptime = new PerformanceCounter("System", "System Up Time");
@@ -146,23 +150,23 @@ namespace System_Info
         // Initialise service list.
         private void initServiceList()
         {
+            // Query the ServiceController to get the list of services.
             services = ServiceController.GetServices();
-            List<servList> sl = new List<servList>();
-            uint pid = 0;
 
+            // Create a list to hold the name and status for each service.
+            List<servList> sl = new List<servList>();
+            
+            // Loop through the services and add them to the list.
             for (int i = 0; i < services.Length; i++)
             {
-                
-
                 sl.Add(new servList()
                 {
                     serviceName = services[i].DisplayName.ToString(),
                     serviceStatus = services[i].Status.ToString()
                 });
-
-                pid = 0;
             }
 
+            // Assign the list of services to the list view in the 'Services' tab.
             lvServices.ItemsSource = sl;
         }
 
@@ -172,7 +176,10 @@ namespace System_Info
         {
             try
             {
+                // Set the service name field
                 lblSNVal.Content = services[lvServices.SelectedIndex].ServiceName.ToString();
+
+                // Set the service status field
                 lblSSVal.Content = services[lvServices.SelectedIndex].Status.ToString();
 
                 ManagementPath mp;
@@ -182,7 +189,7 @@ namespace System_Info
                 ManagementObject mo = new ManagementObject(mp);
                 tbServDesc.Text = mo["Description"].ToString();
 
-                // Get the process ID for a service.
+                // Query the process ID for a service.
                 uint pid = 0;
                 string ServicePIDQuery = string.Format(
                     "SELECT ProcessId FROM Win32_Service WHERE Name='{0}'",
@@ -194,6 +201,7 @@ namespace System_Info
                 {
                     try
                     {
+                        // Set the process ID field for a service.
                         pid = (uint)obj["ProcessId"];
                         lblServPIDInfo.Content = (pid > 0 ? pid.ToString() : "");
                     }
@@ -209,6 +217,8 @@ namespace System_Info
             }
         }
 
+        // Define the class for holding the service name and status, for displaying 
+        // them in the list view.
         protected class servList
         {
             public string serviceName { get; set; }
