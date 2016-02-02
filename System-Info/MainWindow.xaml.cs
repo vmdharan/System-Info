@@ -108,8 +108,10 @@ namespace System_Info
         // Get system information - once every tick
         private void updateSysInfo_perTick(object sender, EventArgs e)
         {
-            PerformanceCounter ramInfo;   
+            PerformanceCounter ramInfo;
+            PerformanceCounter uptime;   
             
+            // Update available memory
             try
             {
                 ramInfo = new PerformanceCounter("Memory", "Available MBytes");
@@ -121,6 +123,18 @@ namespace System_Info
                     memVal = ((double)(totalMem-availMem) / totalMem) * 100;
                     lblMemPct.Content = ((int)memVal).ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            // Uptime
+            try
+            {
+                uptime = new PerformanceCounter("System", "System Up Time");
+                uptime.NextValue();
+                lblSysUptimeVal.Content = TimeSpan.FromSeconds((int)uptime.NextValue()).ToString();
             }
             catch (Exception ex)
             {

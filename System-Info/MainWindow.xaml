@@ -10,32 +10,33 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="400" Margin="2,2,0,0" VerticalAlignment="Top" Width="452" Background="{x:Null}">
             <TabItem Header="Summary">
                 <Grid>
-                    <Label x:Name="lblMemAvail" Content="Available memory:" HorizontalAlignment="Left" Margin="271,296,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-1.077"/>
-                    <Label x:Name="lblMemAvailVal" Content="0 MB" HorizontalAlignment="Left" Margin="381,296,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblMemTotal" Content="Total memory:" HorizontalAlignment="Left" Margin="271,322,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblMemTotalVal" Content="0 MB" HorizontalAlignment="Left" Margin="381,322,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.316,-1.192"/>
-                    <Label x:Name="lblSysName" Content="Device name:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.079,1.654"/>
+                    <Label x:Name="lblMemAvail" Content="Available memory:" HorizontalAlignment="Left" Margin="252,299,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-1.077" FontWeight="Bold"/>
+                    <Label x:Name="lblMemAvailVal" Content="0 MB" HorizontalAlignment="Left" Margin="362,299,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMemTotal" Content="Total memory:" HorizontalAlignment="Left" Margin="252,325,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="lblMemTotalVal" Content="0 MB" HorizontalAlignment="Left" Margin="362,325,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.316,-1.192"/>
+                    <Label x:Name="lblSysName" Content="Device name:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.079,1.654" FontWeight="Bold"/>
                     <Label x:Name="lblSysNameVal" Content="----" HorizontalAlignment="Left" Margin="120,15,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblOS" Content="Operating System:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.316,-0.077"/>
+                    <Label x:Name="lblOS" Content="Operating System:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.316,-0.077" FontWeight="Bold"/>
                     <Label x:Name="lblOSVer1" Content="----" HorizontalAlignment="Left" Margin="120,41,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblOSVer2" Content="----" HorizontalAlignment="Left" Margin="120,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.5,-0.231"/>
-                    <Label x:Name="lblOSBuild" Content="OS version:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblOSBuild" Content="OS version:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="lblCPUInfoVal" Content="----" HorizontalAlignment="Left" Margin="121,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.053,0.385"/>
-                    <Label x:Name="lblCPUInfo" Content="Processor type:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.053,0.115"/>
+                    <Label x:Name="lblCPUInfo" Content="Processor type:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.053,0.115" FontWeight="Bold"/>
                     <Label x:Name="lblCoresVal" Content="----" HorizontalAlignment="Left" Margin="120,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.483,0.346"/>
-                    <Label x:Name="lblThreadsVal" Content="----" HorizontalAlignment="Left" Margin="370,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.448,-0.385"/>
-                    <Label x:Name="lblCores" Content="Physical Cores:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.211,0.115"/>
-                    <Label x:Name="lblThreads" Content="Threads:" HorizontalAlignment="Left" Margin="260,127,0,0" VerticalAlignment="Top"/>
-                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="309,201,47,81">
-                        <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="35" SegmentColor="#FFFFDDEE" StrokeThickness="10" Percentage="100" />
-                        <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="35" Percentage="{Binding Content, ElementName=lblMemPct}" SegmentColor="#FF22AAFF" StrokeThickness="10" />
-                        <Label x:Name="lblMemPct" Content="0" HorizontalAlignment="Left" Margin="28,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.269" FontSize="26.667" FontWeight="Bold" FontFamily="Agency FB"/>
+                    <Label x:Name="lblThreadsVal" Content="----" HorizontalAlignment="Left" Margin="268,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.448,-0.385"/>
+                    <Label x:Name="lblCores" Content="Physical Cores:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.211,0.115" FontWeight="Bold"/>
+                    <Label x:Name="lblThreads" Content="Threads:" HorizontalAlignment="Left" Margin="196,127,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="-0.879,0.577"/>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="250,201,47,81">
+                        <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="28" SegmentColor="#FFFFDDEE" StrokeThickness="10" Percentage="100" />
+                        <System_Info:ProgressArc HorizontalAlignment="Center" VerticalAlignment="Center" Radius="28" Percentage="{Binding Content, ElementName=lblMemPct}" SegmentColor="#FF22AAFF" StrokeThickness="10" />
+                        <Label x:Name="lblMemPct" Content="0" HorizontalAlignment="Left" Margin="23,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.269" FontSize="22" FontWeight="Bold" FontFamily="Agency FB"/>
                     </Grid>
                     <Label x:Name="lblGPUInfoVal" Content="----" HorizontalAlignment="Left" Margin="120,157,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblGPUInfo" Content="Graphics card:" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblGPUInfo" Content="Graphics card:" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <Label x:Name="lblGPUInfoVer" Content="----" HorizontalAlignment="Left" Margin="120,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.483,1.577"/>
-                    <Label x:Name="lblGPUVer" Content="Driver version:" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.368,0.038"/>
-                    <Label x:Name="lblInfo1" Content="----" HorizontalAlignment="Left" Margin="41,273,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,-0.231"/>
+                    <Label x:Name="lblGPUVer" Content="Driver version:" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.368,0.038" FontWeight="Bold"/>
+                    <Label x:Name="lblSysUptime" Content="System uptime:" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.132,-0.231" FontWeight="Bold"/>
+                    <Label x:Name="lblSysUptimeVal" Content="----" HorizontalAlignment="Left" Margin="121,281,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Services">
